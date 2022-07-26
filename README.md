@@ -31,12 +31,11 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_create_parent"></a> [create\_parent](#input\_create\_parent) | (Optional) Boolean that allows for the creation of the parent\_namespace. The var.namespace will be created under this object if set to true | `bool` | `false` | no |
-| <a name="input_create_policy"></a> [create\_policy](#input\_create\_policy) | (Optional) Boolean that allows for the creation of a policy as a part of the module execution. If this is set to true then policy\_name and either policy\_definition or policy\_file are required as inputs | `bool` | `false` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | (Optional) Namespace that will be created as a part of the module execution | `string` | `null` | no |
 | <a name="input_parent_namespace"></a> [parent\_namespace](#input\_parent\_namespace) | (Optional) Parent Namespace path where the child namespace will be created. If not specified, var.namespace will be created at the root. | `string` | `null` | no |
-| <a name="input_policy_definition"></a> [policy\_definition](#input\_policy\_definition) | (Optional) Raw Policy definition that can be supplied as a multi-line input value | `any` | `""` | no |
-| <a name="input_policy_file"></a> [policy\_file](#input\_policy\_file) | (Optional) Name of the policy file (policy.hcl) and location to it from the current directory where Terraform is being executed. | `string` | `""` | no |
-| <a name="input_policy_name"></a> [policy\_name](#input\_policy\_name) | (Optional) Name of the policy that will be created. Required if var.create\_policy is set to true | `string` | `""` | no |
+| <a name="input_policy_definition"></a> [policy\_definition](#input\_policy\_definition) | (Optional) Raw Policy definition that can be supplied as a multi-line input value. Requires var.policy\_name to have a defined value if this is specified | `any` | `""` | no |
+| <a name="input_policy_file"></a> [policy\_file](#input\_policy\_file) | (Optional) Name of the policy file (policy.hcl) and location to it from the current directory where Terraform is being executed. Requires var.policy\_name to have a defined value if this is specified | `string` | `""` | no |
+| <a name="input_policy_name"></a> [policy\_name](#input\_policy\_name) | (Optional) Name of the policy that will be created. Required when using var.policy\_definition or var.policy\_file | `string` | `""` | no |
 
 ## Outputs
 

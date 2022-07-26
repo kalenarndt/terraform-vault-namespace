@@ -19,24 +19,18 @@ variable "create_parent" {
 
 variable "policy_name" {
   type        = string
-  description = "(Optional) Name of the policy that will be created. Required if var.create_policy is set to true"
+  description = "(Optional) Name of the policy that will be created. Required when using var.policy_definition or var.policy_file"
   default     = ""
-}
-
-variable "create_policy" {
-  type        = bool
-  description = "(Optional) Boolean that allows for the creation of a policy as a part of the module execution. If this is set to true then policy_name and either policy_definition or policy_file are required as inputs"
-  default     = false
 }
 
 variable "policy_definition" {
   type        = any
-  description = "(Optional) Raw Policy definition that can be supplied as a multi-line input value"
+  description = "(Optional) Raw Policy definition that can be supplied as a multi-line input value. Requires var.policy_name to have a defined value if this is specified"
   default     = ""
 }
 
 variable "policy_file" {
   type        = string
-  description = "(Optional) Name of the policy file (policy.hcl) and location to it from the current directory where Terraform is being executed."
+  description = "(Optional) Name of the policy file (policy.hcl) and location to it from the current directory where Terraform is being executed. Requires var.policy_name to have a defined value if this is specified"
   default     = ""
 }

@@ -1,19 +1,18 @@
+# Module call that creates a namespace and uses a local file to create a policy definition
 module "ns" {
-  source        = "../../"
-  create_parent = false
-  namespace     = "thismightwork"
-  create_policy = false
-  policy_name   = "admin"
-  policy_file   = "admin.hcl"
+  source      = "../../"
+  namespace   = "thismightwork"
+  policy_name = "admin"
+  policy_file = "admin.hcl"
 }
 
 
+# Module call that creates the parent namespace and the child namespace with a policy definition
 module "namespace-policy-def-parent" {
   source            = "../../"
   create_parent     = true
   parent_namespace  = "never"
   namespace         = "gonnagiveyouup"
-  create_policy     = true
   policy_name       = "nevergonnaletyoudown"
   policy_definition = <<-EOT
     path "*" {

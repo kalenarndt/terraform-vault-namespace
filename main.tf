@@ -9,7 +9,7 @@ resource "vault_namespace" "ns" {
 }
 
 resource "vault_policy" "pol" {
-  count     = var.create_policy ? 1 : 0
+  count     = length(var.policy_file) >= 1 && length(var.policy_name) >= 1 || length(var.policy_definition) >= 1 && length(var.policy_name) >= 1 ? 1 : 0
   namespace = vault_namespace.ns.path_fq
   name      = var.policy_name
   policy    = length(var.policy_file) >= 1 ? file("${path.root}/${var.policy_file}") : var.policy_definition
